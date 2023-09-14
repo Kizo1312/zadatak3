@@ -13,7 +13,7 @@ class App extends Component {
         { name: "Marko", years: 35 },
         { name: "Ana", years: 25 },
       ],
-      nekiText: "Ovo je neki text",
+      nekiText: "Increase years for ",
     };
   }
 
@@ -34,11 +34,11 @@ class App extends Component {
               {user.name} has {user.years} years.
             </p>
             <button onClick={() => this.uvecaj(index)}>
-              Increase years for {user.name}
+              {this.state.nekiText}
+              {user.name}
             </button>
           </div>
         ))}
-        <p>{this.state.nekiText}</p>
       </div>
     );
   }
