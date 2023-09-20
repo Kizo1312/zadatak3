@@ -1,8 +1,9 @@
 import "./App.css";
-// import { Component } from "react";
 import { useState } from "react";
+import FuncComp1 from "./FuncComp1";
+// import { Component } from "react";
 // import ClassComp from "./ClassComp";
-// import FuncComp1 from "./FuncComp1";
+
 // import FuncComp2 from "./FuncComp2";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     { name: "Ivan", years: 30 },
     { name: "Marko", years: 35 },
     { name: "Ana", years: 25 },
+    { name: "Toma", years: 27 },
   ]);
 
   const [nekiText] = useState("Increase years for ");
@@ -19,6 +21,7 @@ function App() {
     newUsers[index].years += 1;
     setUsers(newUsers);
   };
+
   const changeName = (event, index) => {
     const newUsers = [...users];
     newUsers[index].name = event.target.value;
@@ -27,18 +30,12 @@ function App() {
 
   return (
     <div>
-      {users.map((user, index) => (
-        <div key={index}>
-          <p>
-            {user.name} has {user.years} years.
-          </p>
-          <input type="text" onChange={(event) => changeName(event, index)} />
-          <button onClick={() => uvecaj(index)}>
-            {nekiText}
-            {user.name}
-          </button>
-        </div>
-      ))}
+      <FuncComp1
+        users={users}
+        changeName={changeName}
+        uvecaj={uvecaj}
+        nekiText={nekiText}
+      />
     </div>
   );
 }
