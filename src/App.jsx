@@ -14,6 +14,9 @@ function App() {
     { name: "Toma", years: 27 },
   ]);
 
+  const [newName, setNewName] = useState("");
+  const [newYears, setNewYears] = useState("");
+
   const [nekiText] = useState("Increase years for ");
 
   const uvecaj = (index) => {
@@ -28,6 +31,17 @@ function App() {
     setUsers(newUsers);
   };
 
+  const handleAddUser = (event) => {
+    event.preventDefault();
+    if (newName && newYears) {
+      setUsers([...users, { name: newName, years: newYears }]);
+      setNewName("");
+      setNewYears("");
+    }
+  };
+
+  // const handleRemoveUser = (event) => {};
+
   return (
     <div>
       <FuncComp1
@@ -36,6 +50,22 @@ function App() {
         uvecaj={uvecaj}
         nekiText={nekiText}
       />
+
+      <form onSubmit={handleAddUser}>
+        <input
+          type="text"
+          placeholder="Name"
+          value={newName}
+          onChange={(event) => setNewName(event.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Years"
+          value={newYears}
+          onChange={(event) => setNewYears(event.target.value)}
+        />
+        <button type="submit">Add User</button>
+      </form>
     </div>
   );
 }
